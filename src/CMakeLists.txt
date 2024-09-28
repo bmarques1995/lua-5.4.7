@@ -1,37 +1,37 @@
 cmake_minimum_required(VERSION 3.15)
 
-set(LUA_CORE_SRCS lapi.c
-    lcode.c
-    lctype.c
-    ldebug.c
-    ldo.c
-    ldump.c
-    lfunc.c
-    lgc.c
-    llex.c
-    lmem.c
-    lobject.c
-    lopcodes.c
-    lparser.c
-    lstate.c
-    lstring.c
-    ltable.c
-    ltm.c
-    lundump.c
-    lvm.c
-    lzio.c)
-set(LUA_LIB_SRCS lauxlib.c
-    lbaselib.c
-    lcorolib.c
-    ldblib.c
-    liolib.c
-    lmathlib.c
-    loadlib.c
-    loslib.c
-    lstrlib.c
-    ltablib.c
-    lutf8lib.c
-    linit.c)
+set(LUA_CORE_SRCS lapi.cpp
+    lcode.cpp
+    lctype.cpp
+    ldebug.cpp
+    ldo.cpp
+    ldump.cpp
+    lfunc.cpp
+    lgc.cpp
+    llex.cpp
+    lmem.cpp
+    lobject.cpp
+    lopcodes.cpp
+    lparser.cpp
+    lstate.cpp
+    lstring.cpp
+    ltable.cpp
+    ltm.cpp
+    lundump.cpp
+    lvm.cpp
+    lzio.cpp)
+set(LUA_LIB_SRCS lauxlib.cpp
+    lbaselib.cpp
+    lcorolib.cpp
+    ldblib.cpp
+    liolib.cpp
+    lmathlib.cpp
+    loadlib.cpp
+    loslib.cpp
+    lstrlib.cpp
+    ltablib.cpp
+    lutf8lib.cpp
+    linit.cpp)
 
 set(MATH_LINKING)
 
@@ -60,11 +60,11 @@ if(UNIX AND NOT APPLE AND LUA_USES_POSIX)
     target_compile_definitions(lua_static PUBLIC LUA_USE_POSIX)
 endif()
 
-add_executable(lua lua.c)
+add_executable(lua lua.cpp)
 target_include_directories(lua PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 target_link_libraries(lua PUBLIC lua_static)
 
-add_executable(luac luac.c)
+add_executable(luac luac.cpp)
 target_include_directories(luac PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 target_link_libraries(luac PUBLIC lua_static)
 
